@@ -6,7 +6,7 @@ const colors = require('colors')
 const listEnpoint = require ('express-list-endpoints')
 //losc omponentes de ruta
 const bootcampRoutes = require('./routes/BootcampRoutes')
-const courseRoutes = require('./routes/CourseRoute')
+const courseRoutes = require('./routes/CourseRoutes')
 
 //3. Establecer archivo de configuracion
 dotenv.config({
@@ -22,50 +22,8 @@ const app = express()
 //rutas
 app.use('/api/v1/bootcamps' , bootcampRoutes)
 
-app.use('/' , (request , res)=>
-{
-    res
-        .status(200)
-        .json({
-            "success" : true,
-            "data" : "request exitosa"
-        })
-})
-
 //rutas
-app.use('/api/v1/course' , courseRoutes)
-
-app.use('/' , (request , res)=>
-{
-    res
-        .status(200)
-        .json({
-            "success" : true,
-            "data" : "request exitosa"
-        })
-}) 
-
-
-//endpoints de dominio
-//bootcamp
-
-//listar todos los bootcamps
-
-
-
-
-
-
-app.get('/api/v1/bootcamps/:id' , (req,res)=>{
-    console.log(req.params.id)
-    res.
-        status(200)
-        .json({
-            "success": true,
-            "data":`aqui va a salir el bootcamp cuyo id es ${req.params.id}`
-        })
-})
-
+app.use('/api/v1/courses' , courseRoutes)
 
 
 //imprimir la lista de enpoints 

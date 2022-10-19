@@ -111,14 +111,27 @@
 						}
 					},
 					"response": []
+				}
+			]
+		},
+		{
+			"name": "course",
+			"item": [
+				{
+					"name": "traer toodos los courses",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
 				},
 				{
-					"name": "traer cuyo id",
+					"name": "crear course",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:5000/api/v1/bootcamps/1",
+							"raw": "http://localhost:5000/api/v1/courses/",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -127,10 +140,42 @@
 							"path": [
 								"api",
 								"v1",
-								"bootcamps",
-								"1"
+								"courses",
+								""
 							]
 						}
+					},
+					"response": []
+				},
+				{
+					"name": "traer course por id",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "traer course cuyo id",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "actualizar",
+					"request": {
+						"method": "PUT",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "eliminar",
+					"request": {
+						"method": "DELETE",
+						"header": []
 					},
 					"response": []
 				}
