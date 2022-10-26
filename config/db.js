@@ -1,20 +1,28 @@
-const mongoose = require('mongoose')
-const mongoose = require('mongoose')
+const sequelize = require('./seq')
+const { DataTypes } = require('sequelize')
 
-//const uri = 'mongodb+srv://camilo20:camilo1031643099@cluster0.v0slrcp.mongodb.net/bootcamps-sena?retryWrites=true&w=majority'
-const uri = 'mogodb://localhost:27017/bootcamps-sena'
+//crear instancia del modelo
+const UserModel = require('../models/user')
+const User = UserModel(sequelize, DataTypes)
+//definir la funcion de conexion a la base
+//de datos
 
-//componentes de conexion a BD
-//tipo: funcional
+const connectDB = async ()=>{
+    try{
+        //conectarse a la bd
+    
+        await sequelize.authenticate() 
+        console.log('conectado a mysql')
+        const jane = await User.create({
+                username: "Samuel",
+                email: 'samuel@misena.edu.co',
+                password: '123456'
+            });
+            console.log("Jane's auto-generated ID:", jane.id);
 
-const connectDB = async () => {
-    const conn = await mongoose.connect(uri,{
-        useNewUrlParser: true,
-        useUnifiedTopology: true
-    })
-
-    console.log(`MongoDB Conectado: ${conn.connection.host}`)
+    }catch(error){
+        console.log(error)
+    } 
 }
+
 connectDB()
-
-
