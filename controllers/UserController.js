@@ -9,7 +9,6 @@ const UserModel = require('../models/user')
 //crear la entidad:
 const User = UserModel(sequelize,DataTypes)
 
-
 //listar todos los users
 exports.getAllUser = async (req, res) => {
     //Traer todos los users
