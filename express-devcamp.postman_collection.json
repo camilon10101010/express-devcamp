@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "21b5ab06-0e6c-4b6e-a062-b1d216ee0209",
+		"_postman_id": "eefa7c5e-7fbb-436c-89cd-572fe6d48dd3",
 		"name": "express-devcamp",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -307,7 +307,13 @@
 					"name": "eliminar Copy",
 					"request": {
 						"method": "DELETE",
-						"header": [],
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
 						"url": {
 							"raw": "http://localhost:5000/api/v1/bootcamps/1",
 							"protocol": "http",
@@ -327,11 +333,8 @@
 				},
 				{
 					"name": "crear user",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": [
 							{
 								"key": "Content-Type",
@@ -341,7 +344,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\" : \"Camilo\" ,\r\n    \"email\": \"camilo@gmail.com\",\r\n    \"password\": \"12345\"\r\n}"
+							"raw": "{\r\n    \"username\" : \"Raul1234\" ,\r\n    \"email\": \"raul@gmail.com\",\r\n    \"password\": \"123456\"\r\n}"
 						},
 						"url": {
 							"raw": "http://localhost:5000/api/v1/users",
