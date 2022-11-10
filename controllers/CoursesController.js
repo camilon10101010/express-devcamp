@@ -4,77 +4,78 @@ const sequelize = require('../config/seq')
 //Datatypes de Sequelize
 const { DataTypes, ValidationError } = require('sequelize')
 ///el modelo
-const UserModel = require('../models/user')
+const CourseModel = require('../models/courses')
+const courses = require('../models/courses')
 
 //crear la entidad:
-const User = UserModel(sequelize,DataTypes)
+const Course = CourseModel(sequelize,DataTypes)
 
-//listar todos los users
-exports.getAllUser = async (req, res) => {
+//listar todos los Courses
+exports.getAllCourse = async (req,res) => {
     try {
-            //Traer todos los users
-            const users = await User.findAll();
+            //traer todos los course
+            const courses = await Course.findAll();
             //Response con todos los datos
             res
                 .status(200)
                 .json({
                     "succes": true,
-                    "data": users
+                    "data": courses
                 })
     } catch (error) {
-            res 
-                .status(400)
-                .json({
-                    "success": false,
-                    "errors": "error de servidor desconocido"
-        })
+        res
+            .status(400)
+            .json({
+                "succes":false,
+                "errors": error
+            })
+        
     }
 }
 
-//listar user por id
-exports.getSingleUser = async (req,res)=>{
+//listar course por id
+exports.getSingleCourse = async (req,res)=>{
     try {
-        const singleUser = await User.findByPk(req.params.id);
-        if(singleUser){
-        res.
-                status(200)
+        const singleCourse = await Course.findByPk(req.params.id);
+        if(singleCourse){
+            res
+                .status(200)
                 .json({
                     "succes": true,
-                    "data": singleUser
-        })
-    }else{
-        res.
-                status(200)
-                .json({
-                    "succes": false,
-                    "data": "usuario no existente"
-            }) 
-        }
-    }catch (error) {
+                    "data": singleCourse
+                })
+        }else{
+            res.
+                    status(200)
+                    .json({
+                        "success": false,
+                        "data": "course no existente"
+                }) 
+            }
+    } catch (error) {
         res 
-                .status(400)
-                .json({
-                    "succes": false,
-                    "errors": "error de servidor"
-    })
-    
+        .status(400)
+        .json({
+            "succes": false,
+            "errors": "error de servidor"
+        })
     }
 }
 
-//actualizar user por id
-exports.updateUser = async (req, res)=>{
+//actualizar course por id
+exports.updateCourse = async (req, res)=>{
     try {
-        const SingleUser = await User.findByPk(req.params.id);
-        if (!SingleUser) {
+        const SingleCourse = await Course.findByPk(req.params.id);
+        if (!SingleCourse) {
             res
             .status(400)
             .json({
                 "succes":   false,
-                "error": "Error el usuario no existe"
+                "error": "Error el course no existe"
                 })  
             
         } else {
-            await User.update(req.body,  {
+            await Course.update(req.body,  {
                 where: {
                  id: req.params.id
                 }
@@ -84,7 +85,7 @@ exports.updateUser = async (req, res)=>{
                 .status(200)
                 .json({
                     "succes": true,
-                    "data": SingleUser
+                    "data": SingleCourse
                 })
         }
     } catch (error) {
@@ -92,57 +93,57 @@ exports.updateUser = async (req, res)=>{
         .status(400)
         .json({
             "succes":   false,
-            "error": "Error de conexion con el servidor"
+            "error": error
             })
     }
 }
 
-//eliminar user por id
-exports.deleteUser = async (req, res)=>{
+//eliminar course por id
+exports.deleteCourse = async (req, res)=>{
     try {
-        const SingleUser = await User.findByPk(req.params.id);
-        if (!SingleUser) {
+        const SingleCourse = await Course.findByPk(req.params.id);
+        if (!SingleCourse) {
             res
             .status(400)
             .json({
                 "succes": false,
-                "errors": "Usuario no existente"
+                "errors": "Course no existente"
         })
         } else {
-            await User.destroy({
+            await Course.destroy({
                 where: {
                     id: req.params.id
                 }
               });
-        const deleteUser = await User.findByPk(req.params.id);
+        const deleteCourse = await Course.findByPk(req.params.id);
 
             res
             .status(200)
             .json({
                 "succes": true,
-                "data": SingleUser
+                "data": SingleCourse
             })
         }
     } catch (error) {
         res
         .status(400)
         .json({
-            "succes": false,
+            "success": false,
             "errors": " Error de servidor desconocido"
         })
     }
     
 }
 
-//crear nuevo user
-exports.createUser = async (req,res)=>{
+//crear nuevo course
+exports.createCourse = async (req,res)=>{
     try {
-        const newUser = await User.create(req.body)
+        const newCourse = await Course.create(req.body)
         res
             .status(200)
             .json({
                 "succes": true,
-                "data":newUser
+                "data":newCourse
         })
         
     } catch (error) {
@@ -154,13 +155,13 @@ exports.createUser = async (req,res)=>{
                 .status(400)
                 .json({
                     "succes": false,
-                    "errors": error
+                    "errors": errores
                 }) 
         }else{
             res 
                 .status(400)
                 .json({
-                    "succes": false,
+                    "succecs": false,
                     "errors": "error de servidor"
                 })
             }

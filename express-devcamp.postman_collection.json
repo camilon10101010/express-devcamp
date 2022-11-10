@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "eefa7c5e-7fbb-436c-89cd-572fe6d48dd3",
+		"_postman_id": "54aa4985-8593-4d9b-903c-7215488787d1",
 		"name": "express-devcamp",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -10,11 +10,28 @@
 			"item": [
 				{
 					"name": "traer todos los bootcamps",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": {
+						"body": {
+							"mode": "raw",
 							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/bootcamps",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"bootcamps"
+							]
 						}
 					},
 					"response": []
@@ -140,18 +157,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": ""
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "crear course",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:5000/api/v1/courses/",
+							"raw": "http://localhost:5000/api/v1/courses",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -160,8 +166,38 @@
 							"path": [
 								"api",
 								"v1",
-								"courses",
-								""
+								"courses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "crear course",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Carreras\",\r\n    \"description\": \"Bienvenidos a todos\",\r\n    \"weeks\": 4 ,\r\n    \"enroll_cost\": 2000,\r\n    \"minimum_skils\": \"HOLA\",\r\n    \"bootcamp_id\": 1\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/courses",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"courses"
 							]
 						}
 					},
@@ -171,20 +207,26 @@
 					"name": "traer course por id",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
 						"url": {
-							"raw": ""
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "traer course cuyo id",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": ""
+							"raw": "http://localhost:5000/api/v1/courses/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"courses",
+								"4"
+							]
 						}
 					},
 					"response": []
@@ -193,9 +235,30 @@
 					"name": "actualizar",
 					"request": {
 						"method": "PUT",
-						"header": [],
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Cocina\"\r\n}"
+						},
 						"url": {
-							"raw": ""
+							"raw": "http://localhost:5000/api/v1/courses/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"courses",
+								"4"
+							]
 						}
 					},
 					"response": []
@@ -206,7 +269,18 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": ""
+							"raw": "http://localhost:5000/api/v1/courses/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"courses",
+								"4"
+							]
 						}
 					},
 					"response": []
@@ -241,9 +315,15 @@
 					"name": "traer users por id",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
 						"url": {
-							"raw": "http://localhost:5000/api/v1/bootcamps/1",
+							"raw": "http://localhost:5000/api/v1/users/2",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -252,40 +332,28 @@
 							"path": [
 								"api",
 								"v1",
-								"bootcamps",
-								"1"
+								"users",
+								"2"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "traer bootcamp cuyo id Copy",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:5000/api/v1/bootcamps/1",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "5000",
-							"path": [
-								"api",
-								"v1",
-								"bootcamps",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "actualizar Copy",
+					"name": "actualizar",
 					"request": {
 						"method": "PUT",
-						"header": [],
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Daniel\"\r\n}"
+						},
 						"url": {
 							"raw": "http://localhost:5000/api/v1/users/1",
 							"protocol": "http",
@@ -315,7 +383,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:5000/api/v1/bootcamps/1",
+							"raw": "http://localhost:5000/api/v1/users/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -324,7 +392,7 @@
 							"path": [
 								"api",
 								"v1",
-								"bootcamps",
+								"users",
 								"1"
 							]
 						}
@@ -365,15 +433,150 @@
 			]
 		},
 		{
-			"name": "prueba",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": ""
+			"name": "review",
+			"item": [
+				{
+					"name": "traer todos los reviews",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/reviews",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"reviews"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "traer reviews por id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/reviews/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"reviews",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "actualizar",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Adios\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/reviews/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"reviews",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "eliminar",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/reviews/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"reviews",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "crear reviews",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\" : \"Hola\" ,\r\n    \"text\": \"Buenas tardes\",\r\n    \"rating\": 5,\r\n    \"bootcamp_id\": 1,\r\n    \"user_id\":1\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/reviews",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"reviews"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		}
 	]
 }
